@@ -17,7 +17,9 @@ function setActiveBlog(blogProps) {
     <div class="col-md-8 py-2">
       <div class="d-flex ">
         <div class="w-100">
-          <img :src="blogProps.creator.picture" alt="" class="profile-img">
+          <RouterLink :to="{ name: 'Profile', params: { profileId: blogProps.creatorId } }">
+            <img :src="blogProps.creator.picture" alt="" class="profile-img">
+          </RouterLink>
           <h3>{{ blogProps.creator.name }}</h3>
           <hr>
           <div>
