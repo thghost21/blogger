@@ -1,9 +1,14 @@
 <script setup>
 import { Blog } from '@/models/Blog.js';
+import { blogsService } from '@/services/BlogsService.js';
 
 defineProps({
   blogProps: { type: Blog, required: true }
 })
+
+function setActiveBlog(blogProps) {
+  blogsService.setActiveBlog(blogProps)
+}
 </script>
 
 
@@ -21,7 +26,9 @@ defineProps({
             <hr>
             <div class="d-flex justify-content-between">
               <p>{{ blogProps.createdAt.toLocaleDateString() }}</p>
-              <button class="btn btn-warning">Go to Blog</button>
+              <RouterLink :to="{ name: 'Active Blog' }">
+                <button @click="setActiveBlog(blogProps)" class="btn btn-warning">Go to Blog</button>
+              </RouterLink>
             </div>
           </div>
         </div>

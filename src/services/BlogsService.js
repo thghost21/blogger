@@ -10,6 +10,10 @@ class BlogsService {
     const blogs = response.data.map(pojo => new Blog(pojo))
     AppState.blogs = blogs
   }
+
+  setActiveBlog(blogProps) {
+    AppState.activeBlog = blogProps
+  }
 }
 
 
